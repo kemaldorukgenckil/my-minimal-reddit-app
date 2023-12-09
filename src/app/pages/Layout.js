@@ -1,23 +1,30 @@
-import React from 'react';
-import { Outlet, Link } from "react-router-dom";
+import React, {useEffect} from 'react';
+import { NavLink, Outlet, useNavigate} from 'react-router-dom';
+
 
 const Layout = () => {
+  
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate('/subreddits');
+  },[])
+  
   return (
     <>
       <nav>
-        <ul>
+        <ul className='nav-container'>
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="subreddits" className="nav-link" activeClassName="active">Subreddits</NavLink>
           </li>
           <li>
-           <Link to="/contact">Contact</Link>
+            <NavLink to="contact" className="nav-link" activeClassName="active">Contact</NavLink>
           </li>
-         </ul>
+        </ul>
       </nav>
-
+           
       <Outlet />
     </>
-  )
+  );
 };
 
 export default Layout;

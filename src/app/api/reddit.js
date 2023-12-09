@@ -6,6 +6,13 @@ export const getSubreddits =  async ()  => {
     return json.data.children.map((subreddit) => subreddit.data);
 };
 
+export const getHotPosts = async (subreddit) => {
+    const response = await fetch(`${API_ROOT}${subreddit}/hot.json`);
+    const json = await response.json();
+    return json.data.children.map((hotPost) => hotPost.data);
+};
+
+
 
 
 
