@@ -1,16 +1,15 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Route,
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
-  Outlet
+  Router,
 } from 'react-router-dom'
 
 import Subreddit from './app/components/subreddits/Subreddit';
 import Subreddits from './app/components/subreddits/Subreddits';
-
+import HotPostDetail from './app/components/hotPosts/hotPostDetail';
 import Layout from './app/pages/Layout';
 import Contact from './app/pages/Contact';
 import NotFound from './app/pages/NotFound';
@@ -20,9 +19,10 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />} >
       <Route index path="subreddits" element={<Subreddits />} />
-      <Route path="subreddits/:name" element={<Subreddit />} />
+      <Route path="subreddits/:id" element={<Subreddit />} />
+      <Route path="subreddits/:id/:post" element={<HotPostDetail />} />
       <Route path="contact" element={<Contact />} />
-      <Route path="*" element={<NotFound />} />
+       <Route path="*" element={<NotFound />} /> 
     </Route>
 
   )
@@ -35,7 +35,9 @@ const router = createBrowserRouter(
 
 function App() {
   return (
+   
     <RouterProvider router={router} />
+    
   );
 }
 

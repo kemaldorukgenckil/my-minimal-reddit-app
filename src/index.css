@@ -118,16 +118,128 @@ body {
     max-width: 75%;
     max-height: 75%;
  }
+ 
+ .linkWithoutUnderline {
+  text-decoration: none;
+}
 
-
-.hotposts{
-  width: 50%;
-  max-height:750px;
+.hotposts {
+  width: 70%;
+  max-height: 750px;
   background-color: #3498db;
   border-radius: 10px;
   margin: 50px auto;
-  overflow-y: auto; 
+  overflow-y: auto;
+  font-weight: bold;
+  
 }
+
+.hotpost {
+  max-width: 95%;
+  display: flex;
+  flex-flow: column wrap;
+  text-align: left;
+  justify-content: space-around;
+  max-height: 20%;
+  box-shadow: inset -6px -6px 14px 10px rgba(142, 193, 188, 0.45);
+  margin: 1rem auto;
+  border-radius: 5px;
+}
+.hotpost button {
+  width:100%;
+  background-color: transparent;
+  border:none !important;
+  cursor: pointer;
+}
+.hotpost button:hover {
+  background-color:#ff4500; 
+  border-radius: 10px;
+  
+}
+
+.hotpost h3 {
+   color:#2c3e50
+}
+
+.hotpost h4 {
+  color: aqua;
+}
+
+.reddit-icon {
+  color: aqua;
+  width: 5px;
+}
+
+.hotpost-detail-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
+ 
+  height: 750px;
+  align-self: center;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+
+.flex-items:nth-child(1) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  text-align: center;
+  padding: 1%;
+  background-color: #3498db;
+  box-shadow: inset -6px -6px 14px 10px rgba(142, 193, 188, 0.45);
+  border-radius: 10px;
+}
+
+.flex-items:nth-child(1) .avatar{
+  width: 80%;
+  border-radius: 20%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.flex-items:nth-child(2) {
+  display: block;
+  flex-grow: 2;
+  flex-shrink: 0;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+ 
+  max-width: 65%;
+  height: 90%;
+  padding: 1%;
+  background-color: #3498db;
+  box-shadow: inset -6px -6px 14px 10px rgba(142, 193, 188, 0.45);
+  border-radius: 10px;
+
+}
+
+.flex-items:nth-child(3) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  
+  padding: 1%;
+  background-color: #3498db;
+  box-shadow: inset -6px -6px 14px 10px rgba(142, 193, 188, 0.45);
+  border-radius: 10px;
+}
+
+
 
 /* Add media queries for different screen sizes */
 @media (max-width: 1024px) {

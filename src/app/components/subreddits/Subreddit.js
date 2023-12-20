@@ -6,12 +6,14 @@ import HotPosts from '../hotPosts/hotPosts';
 
 
 
-const Subreddit = () => {
+
+const Subreddit = () =>  {
     
-  
-  
     const currentSubreddit = useSelector(getCurrentSubreddit)
-  
+    console.log(currentSubreddit.subredditName);
+   
+
+
     return (
 
     <div className='subreddit-page'>
@@ -24,7 +26,7 @@ const Subreddit = () => {
         
       </div>
       <div className='hotposts'>
-         { <HotPosts currentSubredditDisplayname={currentSubreddit.subredditDisplayname} currentSubredditUrl={currentSubreddit.subredditUrl}  /> } 
+         { <HotPosts currentSubredditName={currentSubreddit.subredditName} currentSubredditDisplayname={currentSubreddit.subredditDisplayname} currentSubredditUrl={currentSubreddit.subredditUrl}  /> } 
       </div>
     </div>
 
@@ -33,4 +35,4 @@ const Subreddit = () => {
   )
 }
 
-export default Subreddit;
+export default Subreddit

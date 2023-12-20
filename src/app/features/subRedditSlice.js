@@ -36,11 +36,11 @@ const subredditsSliceOptions = {
 export const subredditsSlice = createSlice(subredditsSliceOptions);
 export const { getSubredditsSuccess, startGetSubreddits, getSubredditsFailed, setCurrentSubreddit } = subredditsSlice.actions;
 // This is a Redux Thunk that gets subreddits
-export const fetchSubreddits = (subreddit) => {
+export const fetchSubreddits = () => {
   return async (dispatch) => {
     try {
       dispatch(startGetSubreddits());
-      const subreddits = await getSubreddits(subreddit);
+      const subreddits = await getSubreddits();
       dispatch(getSubredditsSuccess(subreddits));
 
     } catch (error) {

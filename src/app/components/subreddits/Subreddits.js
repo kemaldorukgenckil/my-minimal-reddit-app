@@ -15,30 +15,29 @@ const Subreddits = () => {
         dispatch(fetchSubreddits());
     }, [dispatch]);
 
-
+    
     return (
         <div className="subreddits-container">
             <h1>Subreddits</h1>
             <ul>
 
                 {subreddits.map(subreddit => (
-
+                      
                     <li key={subreddit.id}>
+                        <Link to={`/subreddits/${subreddit.name}`}>
                         <button type="button " onClick={ () => dispatch(setCurrentSubreddit({subredditDisplayname:subreddit.display_name, subredditImg:subreddit.icon_img, subredditUrl:subreddit.url,subredditName:subreddit.name }))  }>
                             <img
                                 src={subreddit.icon_img || './icon.png'}
-                                // alt={`${subreddit.display_name}`}
+                                alt={`${subreddit.display_name}`}
                                 className="subreddit-icon"
                                 style={{ border: `3px solid ` }}
 
                             />
 
-                            <Link to={`/subreddits/${subreddit.name}`}>
+                            
                                 {` ${subreddit.display_name}`}
-                            </Link>
-
-
-                        </button>
+                         </button>
+                        </Link>
                     </li>
 
                 ))}
