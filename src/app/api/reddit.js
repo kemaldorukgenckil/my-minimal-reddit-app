@@ -13,7 +13,7 @@ export const getHotPosts = async (subreddit) => {
 };
 
 export const getCommentsForPost = async (permalink) => {
-    const response = await fetch(`https://reddit.com${permalink}.json`);
+    const response = await fetch(`${API_ROOT}${permalink}.json`);
     const json = await response.json();
     return json.data.children.map((subreddit) => subreddit.data);
 };
