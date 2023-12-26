@@ -8,9 +8,10 @@ const initialState = {
     hotPosts: {},
     error: false,
     isLoading: false,
-    commentsForPosts: [],
+    commentsForPost: [],
     commentsIsLoading: false,
     commentsError: false,
+    authorCommentForPost: {},
     selectedHotPost: {},
     authorForHotPost: {},
     authorIsLoading: false,
@@ -39,12 +40,15 @@ const redditHotPostSlice = createSlice({
             state.commentsError = false;
         },
         getCommentsForPostSuccess(state, action) {
-            state.commentsForPosts = action.payload;
+            state.commentsForPost = action.payload;
             state.commentsIsLoading = false;
         },
         getCommentsForPostFailed(state) {
             state.commentsIsLoading = false;
             state.commentsError = true;
+        },
+        setAuthorCommentForPost(state, action) {
+            state.authorCommentForPost = action.payload;
         },
         setSelectedHotPost(state, action) {
             state.selectedHotPost = action.payload;
@@ -85,8 +89,12 @@ export const fetchComments = (permalink) => {
         try {
             dispatch(startGetCommentsForPost())
             const comments = await getCommentsForPost(permalink);
-            console.log(comments);
-            dispatch(getCommentsForPostSuccess(comments));
+            dispatch(setAuthorCommentForPost({ 
+                title: comments[0].data.children[0].data.title,
+                selftext: comments[0].data.children[0].data.selftext,
+                image: comments[0].data.children[0].data.url
+             }));
+            dispatch(getCommentsForPostSuccess(comments[1].data.children.map((comment) => comment.data)));
         } catch (error) {
             dispatch(getCommentsForPostFailed());
         }
@@ -99,7 +107,6 @@ export const fetchAuthor = (user) => {
         try {
            dispatch(startAuthorForPost());
            const author = await getAuthor(user);
-           console.log(author);
            dispatch(getAuthorForHotPost(author)); 
         }catch (error) {
            dispatch(getAuthorFailed());     
@@ -116,11 +123,12 @@ export const { startGetPosts,
     setSelectedHotPost,
     startAuthorForPost,
     getAuthorForHotPost,
-    getAuthorFailed
+    getAuthorFailed,
+    setAuthorCommentForPost
 } = redditHotPostSlice.actions;
 export default redditHotPostSlice.reducer;
 
 export const selectAuthor = (state) => state.redditHotPosts.authorForHotPost
 export const getSelectedHotPost = (state) => state.redditHotPosts.selectedHotPost
-export const selectComments = (state) => state.redditHotPosts.commentsForHotPost
+export const selectComments = (state) => state.redditHotPosts.commentsForPost
 export const selectHotPosts = (state) => state.redditHotPosts

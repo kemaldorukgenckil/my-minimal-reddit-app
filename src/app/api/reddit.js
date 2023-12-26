@@ -7,16 +7,21 @@ export const getSubreddits =  async ()  => {
 };
 
 export const getHotPosts = async (subreddit) => {
+    
     const response = await fetch(`${API_ROOT}${subreddit}/hot.json`);
     const json = await response.json();
     return json.data.children.map((hotPost) => hotPost.data);
 };
 
 export const getCommentsForPost = async (permalink) => {
+    console.log(`${API_ROOT}${permalink.slice(0, -1)}.json`)
     const response = await fetch(`${API_ROOT}${permalink}.json`);
     const json = await response.json();
-    return json.data.children.map((subreddit) => subreddit.data);
+    // return json[1].data.children.map((comment) => comment.data);
+    return json;
 };
+
+
 
 export const getAuthor = async (author) => {
     const response = await fetch(`${API_ROOT}/user/${author}/about.json`);

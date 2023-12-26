@@ -10,8 +10,7 @@ export default function HotPost(props) {
   
 
   
-  // console.log(`post ${post.name}`);
-  // console.log(`name ${currentSubredditName} `);
+
 
 
 

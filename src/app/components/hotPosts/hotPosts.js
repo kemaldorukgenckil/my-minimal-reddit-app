@@ -55,6 +55,7 @@ export default function HotPosts(props) {
             ) : (
               <div>
                 <p>Unexpected error occurred.</p>
+                
               </div>
             )
           )

@@ -185,59 +185,120 @@ body {
 }
 
 .flex-items:nth-child(1) {
-  display: block;
+  display: flex;
+  flex-flow: column wrap;
   flex-grow: 0;
   flex-shrink: 1;
   flex-basis: auto;
   align-self: auto;
   order: 0;
-  padding: 10px;
+  padding: 20px;
   margin: 10px;
   width: 200px;
   text-align: center;
-  padding: 1%;
+  
   background-color: #3498db;
   box-shadow: inset -6px -6px 14px 10px rgba(142, 193, 188, 0.45);
   border-radius: 10px;
 }
 
 .flex-items:nth-child(1) .avatar{
-  width: 80%;
   border-radius: 20%;
-  object-fit: cover;
+  max-width: 95%;
   margin-bottom: 10px;
-}
+  }
+
+  .flex-items:nth-child(1) h2 p{
+    max-width: 95%;
+  }
+
+
 
 .flex-items:nth-child(2) {
-  display: block;
+  display: flex;
+  flex-flow: column;
   flex-grow: 2;
-  flex-shrink: 0;
-  flex-basis: auto;
+  padding: 1%;
   align-self: auto;
   order: 0;
- 
+  overflow-y: auto;
   max-width: 65%;
   height: 90%;
   padding: 1%;
   background-color: #3498db;
   box-shadow: inset -6px -6px 14px 10px rgba(142, 193, 188, 0.45);
   border-radius: 10px;
+  font-weight: bold;
+ 
 
 }
-
-.flex-items:nth-child(3) {
-  display: block;
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  align-self: auto;
-  order: 0;
-  
-  padding: 1%;
-  background-color: #3498db;
+.flex-items:nth-child(2) .comment {
+  max-width: 95%;
+  text-align: center;
+  justify-content: space-around;
+  max-height: 20%;
   box-shadow: inset -6px -6px 14px 10px rgba(142, 193, 188, 0.45);
-  border-radius: 10px;
+ 
+  border-radius: 5px;
+  
 }
+.flex-items:nth-child(2) .comment p{
+  color:#2c3e50;
+ 
+}
+.flex-items:nth-child(2) .comment span{
+  color: aqua;
+}
+.selftext {
+  display: flex;
+  justify-content: center;
+  height: 20%;
+ 
+}
+.selftext img {
+  width:50%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: 5px;
+  margin-right:20px;
+}
+.selftext .no-image img{
+  display:none !important;
+  width:0%;
+}
+.selfanswer{
+  flex:1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.selfanswer span{
+  color: aqua;
+}
+.about {
+  border: #3498db solid 1px;
+  border-radius:5px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  width: 30%;
+  position: absolute;
+  top: 20%;
+  left: 35%;
+
+}
+.about a {
+  text-decoration: none;
+}
+.about > * {
+  font-weight: bold;
+}
+
+
+
+
+
 
 
 
@@ -246,8 +307,10 @@ body {
   .subreddits-container {
      max-width: 50%;
   }
+  .selftext{
+    display: column;
  }
- 
+}
  @media (max-width: 768px) {
   .subreddits-container {
      max-width: 75%;

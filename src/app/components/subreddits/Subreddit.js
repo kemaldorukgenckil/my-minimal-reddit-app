@@ -2,6 +2,7 @@ import React from 'react'
 import { getCurrentSubreddit } from '../../features/subRedditSlice';
 import { useSelector } from 'react-redux';
 import HotPosts from '../hotPosts/hotPosts';
+import logo from "./reddit-logo.png"
 
 
 
@@ -20,7 +21,7 @@ const Subreddit = () =>  {
       <div className="subreddit">
 
         <h3 className="subreddit-title">{currentSubreddit.subredditUrl}</h3>
-        <img src={currentSubreddit.subredditImg} alt={currentSubreddit.subredditDisplayname} />
+        <img src={currentSubreddit.subredditImg || logo} alt={currentSubreddit.subredditDisplayname} />
         <h2 >{currentSubreddit.subredditDisplayname} </h2>
         
         

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectSubreddits, fetchSubreddits,setCurrentSubreddit } from "../../features/subRedditSlice";
 import { Link } from "react-router-dom";
+import logo from "./reddit-logo.png"
 
 
 
@@ -14,7 +15,8 @@ const Subreddits = () => {
     useEffect(() => {
         dispatch(fetchSubreddits());
     }, [dispatch]);
-
+    
+    
     
     return (
         <div className="subreddits-container">
@@ -27,7 +29,7 @@ const Subreddits = () => {
                         <Link to={`/subreddits/${subreddit.name}`}>
                         <button type="button " onClick={ () => dispatch(setCurrentSubreddit({subredditDisplayname:subreddit.display_name, subredditImg:subreddit.icon_img, subredditUrl:subreddit.url,subredditName:subreddit.name }))  }>
                             <img
-                                src={subreddit.icon_img || './icon.png'}
+                                src={subreddit.icon_img || logo}
                                 alt={`${subreddit.display_name}`}
                                 className="subreddit-icon"
                                 style={{ border: `3px solid ` }}
