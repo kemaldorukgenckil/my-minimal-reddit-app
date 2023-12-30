@@ -7,7 +7,6 @@ import {
     selectHotPosts
 } from '../../features/redditHotPostSlice';
 import { useSelector, useDispatch } from 'react-redux';
-import reddit from '../subreddits/reddit-logo.png'
 import { useParams } from 'react-router-dom'
 
 import userlogo from "./reddit-default-user.png"
@@ -42,7 +41,7 @@ export default function HotPostDetail() {
             <div className="flex-items">
                 <img
                     className="avatar"
-                    src={author.avatar || userlogo}
+                    src={ author.avatar && author.avatar.endsWith('.png') ? author.avatar : userlogo}
                     alt='Author profile'
 
                 />
@@ -50,8 +49,14 @@ export default function HotPostDetail() {
                 <p>Total Karma: {author.totalKarma}</p>
             </div>
             <div className='flex-items'>
-                <div className={`selftext ${hotPosts.authorCommentForPost.image ? 'no-image' : ''} `}>
-                    <img src={hotPosts.authorCommentForPost.image === "" && reddit} alt="post" />
+                <div className={`selftext ${ hotPosts.authorCommentForPost && 
+                                             hotPosts.authorCommentForPost.image &&
+                                              !hotPosts.authorCommentForPost.image.endsWith('.png') &&
+                                              !hotPosts.authorCommentForPost.image.endsWith('.jpg') &&
+                                              !hotPosts.authorCommentForPost.image.endsWith('.jpeg')
+                                             ? 'no-image' : ''
+                                            }`}>
+                    <img src={hotPosts.authorCommentForPost.image} alt="post" />
                     <div className='selfanswer'>
                         <h4>{hotPosts.authorCommentForPost.title}</h4>
                         <span>{hotPosts.authorCommentForPost.selftext}</span>

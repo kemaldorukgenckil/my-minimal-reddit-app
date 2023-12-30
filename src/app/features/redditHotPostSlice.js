@@ -64,7 +64,11 @@ const redditHotPostSlice = createSlice({
         getAuthorFailed(state) {
             state.authorIsLoading = false;
             state.authorError = true;
+        },
+        resetState(state) {
+            return initialState;
         }
+        
 
 
     }
@@ -74,6 +78,7 @@ const redditHotPostSlice = createSlice({
 // This is a Redux Thunk that gets posts from a subreddit.
 export const fetchHotPosts = (subreddit) => {
     return async (dispatch) => {
+        dispatch(resetState());
         try {
             dispatch(startGetPosts());
             const hotPosts = await getHotPosts(subreddit);
@@ -86,6 +91,7 @@ export const fetchHotPosts = (subreddit) => {
 
 export const fetchComments = (permalink) => {
     return async (dispatch) => {
+        
         try {
             dispatch(startGetCommentsForPost())
             const comments = await getCommentsForPost(permalink);
@@ -124,7 +130,8 @@ export const { startGetPosts,
     startAuthorForPost,
     getAuthorForHotPost,
     getAuthorFailed,
-    setAuthorCommentForPost
+    setAuthorCommentForPost,
+    resetState
 } = redditHotPostSlice.actions;
 export default redditHotPostSlice.reducer;
 

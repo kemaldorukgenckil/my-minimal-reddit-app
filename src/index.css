@@ -209,7 +209,7 @@ body {
   }
 
   .flex-items:nth-child(1) h2 p{
-    max-width: 95%;
+    width: 95%;
   }
 
 
@@ -251,8 +251,11 @@ body {
 }
 .selftext {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  height: 20%;
+  height: 25%;
+  width: auto;
+  
  
 }
 .selftext img {
@@ -262,15 +265,15 @@ body {
   border-radius: 5px;
   margin-right:20px;
 }
-.selftext .no-image img{
-  display:none !important;
+.selftext.no-image img{
+  display:none;
   width:0%;
 }
 .selfanswer{
   flex:1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  height: 100%;
+  overflow-y: auto;
+  
 }
 .selfanswer span{
   color: aqua;
