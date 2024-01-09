@@ -7,7 +7,7 @@ const Layout = () => {
   const navigate = useNavigate();
   useEffect(() => {
     navigate('/subreddits');
-  },[navigate])
+  },[])
   
   return (
     <>
